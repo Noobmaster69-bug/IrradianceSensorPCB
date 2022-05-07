@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=RX2 Pin=P5-2
+Removed Pin From Net: NetName=TX2 Pin=P5-3
+Add Pin To Net: Unknown Pin: Pin 1-0
+Add Pin To Net: Unknown Pin: Pin 2-1
+Add Pin To Net: Unknown Pin: Pin 2-2
+Added Pin To Net: NetName=RX1 Pin=P5-2
+Added Pin To Net: NetName=TX1 Pin=P5-3
+Add Class Member: Failed to add class member : Component 2 L127H
+Added Room: Name=Irradiance Sensor

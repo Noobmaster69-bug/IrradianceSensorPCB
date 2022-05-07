@@ -1,0 +1,118 @@
+Added Component: Designator=12(RESC2012X11N)
+Add component (AddParameter): Name = "Value"; Value = "1M"; VariantName = "[No Variations]"
+Added Component: Designator=C6(RESC2012X11N)
+Add component (AddParameter): Name = "Cap"; Value = "20pF"; VariantName = "[No Variations]"
+Added Component: Designator=C7(RESC2012X11N)
+Add component (AddParameter): Name = "Cap"; Value = "20pF"; VariantName = "[No Variations]"
+Added Component: Designator=C8(RESC2012X11N)
+Add component (AddParameter): Name = "Cap"; Value = "20pF"; VariantName = "[No Variations]"
+Added Component: Designator=C9(RESC2012X11N)
+Add component (AddParameter): Name = "Cap"; Value = "20pF"; VariantName = "[No Variations]"
+Added Component: Designator=C11(RESC2012X11N)
+Add component (AddParameter): Name = "Cap"; Value = "0.1uF"; VariantName = "[No Variations]"
+Added Component: Designator=C12(RESC2012X11N)
+Add component (AddParameter): Name = "Cap"; Value = "0.1uF"; VariantName = "[No Variations]"
+Added Component: Designator=C13(RESC2012X11N)
+Add component (AddParameter): Name = "Cap"; Value = "0.1uF"; VariantName = "[No Variations]"
+Added Component: Designator=C14(RESC2012X11N)
+Add component (AddParameter): Name = "Cap"; Value = "0.1uF"; VariantName = "[No Variations]"
+Added Component: Designator=U1(QFP50P900X900X160-48N)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "STMicroelectronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "STM32F103C8T6"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "LQFP-48 STMicroelectronics"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/STM32F103C8T6/STMicroelectronics/view-part/52195/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Y1(HC49US)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Xinhunjing"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "49S8M"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/49S8M/Xinhunjing/view-part/105661/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Y2(R38)
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Jul-2002"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Re-released for DXP Platform."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Crystal, Thru-Hole; 2 Leads; Body 3.1 x 8.2 mm (Dia.xH)"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "R38"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "8-Jun-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=OSCOUT Pin=12-1
+Added Pin To Net: NetName=OSCIN Pin=12-2
+Added Pin To Net: NetName=GND Pin=C6-1
+Added Pin To Net: NetName=OSCIN Pin=C6-2
+Added Pin To Net: NetName=GND Pin=C7-1
+Added Pin To Net: NetName=PC14 Pin=C7-2
+Added Pin To Net: NetName=GND Pin=C8-1
+Added Pin To Net: NetName=OSCOUT Pin=C8-2
+Added Pin To Net: NetName=GND Pin=C9-1
+Added Pin To Net: NetName=PC15 Pin=C9-2
+Added Pin To Net: NetName=3.3V Pin=C11-1
+Added Pin To Net: NetName=GND Pin=C11-2
+Added Pin To Net: NetName=3.3V Pin=C12-1
+Added Pin To Net: NetName=GND Pin=C12-2
+Added Pin To Net: NetName=3.3V Pin=C13-1
+Added Pin To Net: NetName=GND Pin=C13-2
+Added Pin To Net: NetName=3.3V Pin=C14-1
+Added Pin To Net: NetName=GND Pin=C14-2
+Added Pin To Net: NetName=PC14 Pin=U1-3
+Added Pin To Net: NetName=PC15 Pin=U1-4
+Added Pin To Net: NetName=OSCIN Pin=U1-5
+Added Pin To Net: NetName=OSCOUT Pin=U1-6
+Added Pin To Net: NetName=RST Pin=U1-7
+Added Pin To Net: NetName=GND Pin=U1-8
+Added Pin To Net: NetName=3.3V Pin=U1-9
+Added Pin To Net: NetName=Irradiance Pin=U1-11
+Added Pin To Net: NetName=TX2 Pin=U1-12
+Added Pin To Net: NetName=RX2 Pin=U1-13
+Added Pin To Net: NetName=Vin Pin=U1-14
+Added Pin To Net: NetName=Temp Pin=U1-15
+Added Pin To Net: NetName=READY Pin=U1-16
+Added Pin To Net: NetName=LED Pin=U1-17
+Added Pin To Net: NetName=PB0 Pin=U1-18
+Added Pin To Net: NetName=PB1 Pin=U1-19
+Added Pin To Net: NetName=BOOT1 Pin=U1-20
+Added Pin To Net: NetName=PB10 Pin=U1-21
+Added Pin To Net: NetName=PB11 Pin=U1-22
+Added Pin To Net: NetName=GND Pin=U1-23
+Added Pin To Net: NetName=3.3V Pin=U1-24
+Added Pin To Net: NetName=NSS2 Pin=U1-25
+Added Pin To Net: NetName=SCK2 Pin=U1-26
+Added Pin To Net: NetName=MISO2 Pin=U1-27
+Added Pin To Net: NetName=MOSI2 Pin=U1-28
+Added Pin To Net: NetName=TxEnable Pin=U1-29
+Added Pin To Net: NetName=TX1 Pin=U1-30
+Added Pin To Net: NetName=RX1 Pin=U1-31
+Added Pin To Net: NetName=SWDIO Pin=U1-34
+Added Pin To Net: NetName=GND Pin=U1-35
+Added Pin To Net: NetName=3.3V Pin=U1-36
+Added Pin To Net: NetName=SWDCLK Pin=U1-37
+Added Pin To Net: NetName=PB3 Pin=U1-39
+Added Pin To Net: NetName=PB4 Pin=U1-40
+Added Pin To Net: NetName=PB5 Pin=U1-41
+Added Pin To Net: NetName=PB6 Pin=U1-42
+Added Pin To Net: NetName=PB7 Pin=U1-43
+Added Pin To Net: NetName=BOOT0 Pin=U1-44
+Added Pin To Net: NetName=PB8 Pin=U1-45
+Added Pin To Net: NetName=PB9 Pin=U1-46
+Added Pin To Net: NetName=GND Pin=U1-47
+Added Pin To Net: NetName=3.3V Pin=U1-48
+Added Pin To Net: NetName=OSCIN Pin=Y1-1
+Added Pin To Net: NetName=OSCOUT Pin=Y1-2
+Added Pin To Net: NetName=PC15 Pin=Y2-1
+Added Pin To Net: NetName=PC14 Pin=Y2-2
+Added Member To Class: ClassName=Irradiance Sensor Member=Component 12 Res
+Added Member To Class: ClassName=Irradiance Sensor Member=Component C6 Cap
+Added Member To Class: ClassName=Irradiance Sensor Member=Component C7 Cap
+Added Member To Class: ClassName=Irradiance Sensor Member=Component C8 Cap
+Added Member To Class: ClassName=Irradiance Sensor Member=Component C9 Cap
+Added Member To Class: ClassName=Irradiance Sensor Member=Component C11 Cap
+Added Member To Class: ClassName=Irradiance Sensor Member=Component C12 Cap
+Added Member To Class: ClassName=Irradiance Sensor Member=Component C13 Cap
+Added Member To Class: ClassName=Irradiance Sensor Member=Component C14 Cap
+Added Member To Class: ClassName=Irradiance Sensor Member=Component U1 STM32F103C8T6
+Added Member To Class: ClassName=Irradiance Sensor Member=Component Y1 8Mhz
+Added Member To Class: ClassName=Irradiance Sensor Member=Component Y2 32,768k
+Added Room: Name=Irradiance Sensor

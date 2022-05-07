@@ -1,0 +1,5 @@
+Added Component: Designator=23(RESC2012X11N)
+Add component (AddParameter): Name = "Value"; Value = "100k"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=Net23_1 Pin=23-1
+Added Member To Class: ClassName=Irradiance Sensor Member=Component 23 Res
+Added Room: Name=Irradiance Sensor

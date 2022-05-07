@@ -1,0 +1,5 @@
+Added Pin To Net: NetName=Vref Pin=4-5
+Added Pin To Net: NetName=Net4_6 Pin=4-6
+Added Pin To Net: NetName=Net4_6 Pin=4-7
+Added Net: Name=Net4_6
+Added Room: Name=Irradiance Sensor

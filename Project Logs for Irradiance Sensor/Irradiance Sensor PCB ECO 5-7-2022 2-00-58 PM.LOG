@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=Vref Pin=R3-1
+Change Net Name : Old Net Name=Vref New Net Name=Net3_1
+Added Pin To Net: NetName=Vref Pin=4-6
+Added Pin To Net: NetName=Vref Pin=4-7
+Added Pin To Net: NetName=Vref Pin=R3-1
+Added Net: Name=Vref
+Added Room: Name=Irradiance Sensor

@@ -1,0 +1,9 @@
+Change Component Designator: OldDesignator= NewDesignator=23
+Change Component Designator: OldDesignator=R6 NewDesignator=R5
+Change Component Designator: OldDesignator=R6 NewDesignator=R7
+Added Member To Class: ClassName=Irradiance Sensor Member=Component 11 Res
+Added Member To Class: ClassName=Irradiance Sensor Member=Component 19 Res
+Added Member To Class: ClassName=Irradiance Sensor Member=Component 23 Res
+Added Member To Class: ClassName=Irradiance Sensor Member=Component R5 Res
+Added Member To Class: ClassName=Irradiance Sensor Member=Component R7 Res
+Added Room: Name=Irradiance Sensor

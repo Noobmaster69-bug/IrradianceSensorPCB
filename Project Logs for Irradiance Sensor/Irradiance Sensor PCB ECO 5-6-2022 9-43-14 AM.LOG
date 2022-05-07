@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=5V Pin=MAX1-1
+Removed Pin From Net: NetName=5V Pin=P5-1
+Added Pin To Net: NetName=3.3V Pin=MAX1-3
+Added Pin To Net: NetName=3.3V Pin=P5-1
+Added Member To Class: ClassName=Irradiance Sensor Member=Component R6 Res
+Added Room: Name=Irradiance Sensor

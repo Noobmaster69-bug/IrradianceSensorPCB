@@ -1,0 +1,4 @@
+Added Pin To Net: NetName=Net26_2 Pin=R1-1
+Added Pin To Net: NetName=Net26_2 Pin=U1-14
+Change Net Name : Old Net Name=Net26_2 New Net Name=Vin
+Added Room: Name=Irradiance Sensor

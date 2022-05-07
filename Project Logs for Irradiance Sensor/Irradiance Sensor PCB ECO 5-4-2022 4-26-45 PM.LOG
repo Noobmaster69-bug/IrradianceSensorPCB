@@ -1,0 +1,8 @@
+Added Component: Designator=d(INDP122122X80N)
+Added Pin To Net: NetName=5V Pin=d-2
+Added Pin To Net: NetName=NetD1_C Pin=d-1
+Added Pin To Net: NetName=NetD1_C Pin=D1-C
+Added Pin To Net: NetName=NetD1_C Pin=VR1-2
+Added Net: Name=NetD1_C
+Added Member To Class: ClassName=Irradiance Sensor Member=Component d L127H
+Added Room: Name=Irradiance Sensor
