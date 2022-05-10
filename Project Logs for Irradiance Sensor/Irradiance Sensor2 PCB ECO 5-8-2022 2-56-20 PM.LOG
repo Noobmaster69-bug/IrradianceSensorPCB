@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=READY Pin=U1-16
+Removed Pin From Net: NetName=TxEnable Pin=U1-29
+Added Pin To Net: NetName=TxEnable Pin=U1-16
+Added Pin To Net: NetName=READY Pin=U1-29
+Added Member To Class: ClassName=Irradiance Sensor Member=Component C16 Cap
+Added Room: Name=Irradiance Sensor

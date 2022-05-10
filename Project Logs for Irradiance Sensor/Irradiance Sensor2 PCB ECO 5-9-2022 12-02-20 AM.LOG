@@ -1,0 +1,8 @@
+Added Component: Designator=?(SOT230P700X180-4N)
+Add component (AddParameter): Name = "Voltage"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=3.3V Pin=1-4
+Added Pin To Net: NetName=Net?_2 Pin=?-2
+Added Pin To Net: NetName=Net?_2 Pin=?-4
+Added Net: Name=Net?_2
+Added Member To Class: ClassName=Irradiance Sensor Member=Component ? LM1117
+Added Room: Name=Irradiance Sensor

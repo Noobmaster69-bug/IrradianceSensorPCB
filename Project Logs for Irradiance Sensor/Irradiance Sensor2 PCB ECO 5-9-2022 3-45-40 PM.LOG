@@ -1,0 +1,14 @@
+Change Component Designator: OldDesignator=1 NewDesignator=IC1
+Added Component: Designator=R?(tro smd 0603)
+Add component (AddParameter): Name = "Chung_Loai"; Value = "Dán"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH006333"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "So_Chan"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten_Linh_Kien"; Value = "Tr? 0603 1% 10k"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=R?-1
+Added Pin To Net: NetName=BOOT0 Pin=R?-2
+Added Member To Class: ClassName=Irradiance Sensor Member=Component IC1 LM1117
+Added Member To Class: ClassName=Irradiance Sensor Member=Component R? 10k
+Added Member To Class: ClassName=Irradiance Sensor Member=Component tan1 MAX3485EESA+
+Added Room: Name=Irradiance Sensor

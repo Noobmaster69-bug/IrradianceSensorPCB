@@ -1,0 +1,38 @@
+Removed Pin From Net: NetName=PB1 Pin=R13-2
+Removed Pin From Net: NetName=PB3 Pin=R14-2
+Removed Pin From Net: NetName=PB4 Pin=R17-2
+Removed Pin From Net: NetName=PB5 Pin=R18-2
+Removed Pin From Net: NetName=PB6 Pin=R19-2
+Removed Pin From Net: NetName=PB7 Pin=R20-2
+Removed Pin From Net: NetName=PB8 Pin=R21-2
+Removed Pin From Net: NetName=PB9 Pin=R22-2
+Removed Pin From Net: NetName=PB8 Pin=S1-9
+Removed Pin From Net: NetName=PB7 Pin=S1-10
+Removed Pin From Net: NetName=PB6 Pin=S1-11
+Removed Pin From Net: NetName=PB5 Pin=S1-12
+Removed Pin From Net: NetName=PB4 Pin=S1-13
+Removed Pin From Net: NetName=PB3 Pin=S1-14
+Removed Pin From Net: NetName=PB1 Pin=S1-15
+Removed Pin From Net: NetName=PB9 Pin=S2-6
+Added Pin To Net: NetName=PB3 Pin=R13-2
+Added Pin To Net: NetName=PB4 Pin=R14-2
+Added Pin To Net: NetName=PB5 Pin=R17-2
+Added Pin To Net: NetName=PB6 Pin=R18-2
+Added Pin To Net: NetName=PB7 Pin=R19-2
+Added Pin To Net: NetName=PB8 Pin=R20-2
+Added Pin To Net: NetName=PB9 Pin=R21-2
+Added Pin To Net: NetName=PB1 Pin=R22-2
+Added Pin To Net: NetName=PB9 Pin=S1-9
+Added Pin To Net: NetName=PB8 Pin=S1-10
+Added Pin To Net: NetName=PB7 Pin=S1-11
+Added Pin To Net: NetName=PB6 Pin=S1-12
+Added Pin To Net: NetName=PB5 Pin=S1-13
+Added Pin To Net: NetName=PB4 Pin=S1-14
+Added Pin To Net: NetName=PB3 Pin=S1-15
+Added Pin To Net: NetName=PB1 Pin=S2-6
+Added Pin To Net: NetName=PA15 Pin=R12-2
+Added Pin To Net: NetName=PA15 Pin=S1-16
+Added Pin To Net: NetName=PA15 Pin=U1-2
+Added Net: Name=PA15
+Added Member To Class: ClassName=Irradiance Sensor Member=Component C17 Cap
+Added Room: Name=Irradiance Sensor
