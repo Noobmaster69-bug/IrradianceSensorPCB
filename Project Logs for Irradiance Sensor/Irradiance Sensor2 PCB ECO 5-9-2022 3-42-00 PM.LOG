@@ -1,0 +1,29 @@
+Change Component Designator: OldDesignator=1 NewDesignator=IC1
+Added Component: Designator=R?(tro smd 0603)
+Add component (AddParameter): Name = "Chung_Loai"; Value = "Dán"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH006333"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "So_Chan"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten_Linh_Kien"; Value = "Tr? 0603 1% 10k"; VariantName = "[No Variations]"
+Added Component: Designator=tan1(SOIC127P600X175-8N)
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Maxim Integrated"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "MAX3485EESA+"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "SOIC-8 Maxim"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/MAX3485EESA%2B/Maxim%20Integrated/view-part/558005/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=R?-1
+Added Pin To Net: NetName=BOOT0 Pin=R?-2
+Added Pin To Net: NetName=RX2 Pin=tan1-1
+Added Pin To Net: NetName=TxEnable Pin=tan1-2
+Added Pin To Net: NetName=TxEnable Pin=tan1-3
+Added Pin To Net: NetName=TX2 Pin=tan1-4
+Added Pin To Net: NetName=GND Pin=tan1-5
+Added Pin To Net: NetName=A Pin=tan1-6
+Added Pin To Net: NetName=B Pin=tan1-7
+Added Pin To Net: NetName=3.3V Pin=tan1-8
+Added Member To Class: ClassName=Irradiance Sensor Member=Component R? 10k
+Added Member To Class: ClassName=Irradiance Sensor Member=Component tan1 MAX3485EESA+
+Added Room: Name=Irradiance Sensor

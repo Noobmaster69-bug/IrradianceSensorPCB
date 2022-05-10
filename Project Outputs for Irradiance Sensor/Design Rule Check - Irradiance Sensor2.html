@@ -1,0 +1,663 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD22\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">5/10/2022</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">1:56:09 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc" class="file"><acronym title="C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc">C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">105</td></tr>
+</table>
+</td>
+</table><a name="IDNFOLJNTVR1ELOYL41HRTDOCF2CFPLWYPPRK3QXLKOLNGNEFTQKU"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3LWHRPS3ZQTMGJ03YV1TEYNEUKKE1VD55Q4UZWKIZPAJTTXMXZGG">Clearance Constraint (Gap=7mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDY41KGMANHA0IPUT1UKDPTSE44K2LIYFP4RI1MYG3DUPVVQMSAAIN">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDOWPPPSDLAJ1UF3HZ5OITCDRFBHAKDVA4BLRTJYK3KN21FLRKMLTO">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDNIQHD1ISUEKGPKDMTX2V0F0WKJ1YIA3NQGTRQ1HA5SUT2ACTBHHJ">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMXNC1CHEZPOYFVSVQJTX1HP2HC0XJL0XI50BXPPMRAURI0EZEJP">Width Constraint (Min=10mil) (Max=30mil) (Preferred=30mil) (InNetClass('Power Supply'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDX34AIXFYAJF4BZJYT4OXFKAF3FPJZL2CUIXKK1PC2W40LVGGSPZJ">Width Constraint (Min=10mil) (Max=30mil) (Preferred=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZLII1M1MRMDEIYOLPMIAARMSLJV4NCEEYN5FP2NCHZHC41M5IP1J">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID5IWNJ2NPUAOCGROWF5EVTTFXSMJ251Y4OWO1HJBQKXC5L0SPBI4">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">7</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVE3RU3AL4OIIC3YX2ZI4NUKIZL255EAZACW3JOOFRZ2NO55NNYAP">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDRAQBRGNRCZ04PDK1WDJQM4S20HMZN02GWIDJLD2IQRJGPC5KLKG">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">45</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGLN5VV1MDQIOPV0WTXYRONL1MCBS4SPTQAR0JXOJE00ZCAQKX5XH">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</a></td>
+<td class="column2">44</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0MFDDPRJ1VFOJKIQ2AFVRYOBJNFBWBHB3WSLKCM3CIVLAC3UFBII">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">8</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVADUDOMX5QOPQU2JD1FOO1EZDUKQAPXSAX1CLBL3U0CDQEFFYVB">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTKZ52M5XC5ENINMSOF5NGC2UFESZBHUXJAAMUEJBOQ4OCNELVSVO">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">105</td>
+</tr>
+</table><br><a name="IDY41KGMANHA0IPUT1UKDPTSE44K2LIYFP4RI1MYG3DUPVVQMSAAIN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Short-Circuit Constraint (Allowed=No) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4857.45mil|Location2.X=4875.562mil|Location1.Y=3322.339mil|Location2.Y=3340.451mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4857.45mil|Location2.X=4875.562mil|Location1.Y=3322.339mil|Location2.Y=3340.451mil|Absolute=True">Short-Circuit Constraint: Between Pad U1-20(4866.25mil,3331.161mil) on Top Layer And Track (4866.25mil,3331.161mil)(4866.762mil,3331.673mil) on Top Layer Location : [X = 4866.506mil][Y = 3331.395mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID5IWNJ2NPUAOCGROWF5EVTTFXSMJ251Y4OWO1HJBQKXC5L0SPBI4"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2860.635mil|Location2.X=3019.365mil|Location1.Y=2350.635mil|Location2.Y=2509.365mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2860.635mil|Location2.X=3019.365mil|Location1.Y=2350.635mil|Location2.Y=2509.365mil|Absolute=True">Hole Size Constraint: (157.48mil &gt; 100mil) Pad Free-2(2940mil,2430mil) on Multi-Layer Actual Hole Size = 157.48mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2860.635mil|Location2.X=3019.365mil|Location1.Y=4600.635mil|Location2.Y=4759.365mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2860.635mil|Location2.X=3019.365mil|Location1.Y=4600.635mil|Location2.Y=4759.365mil|Absolute=True">Hole Size Constraint: (157.48mil &gt; 100mil) Pad Free-2(2940mil,4680mil) on Multi-Layer Actual Hole Size = 157.48mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6670.635mil|Location2.X=6829.365mil|Location1.Y=2350.635mil|Location2.Y=2509.365mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6670.635mil|Location2.X=6829.365mil|Location1.Y=2350.635mil|Location2.Y=2509.365mil|Absolute=True">Hole Size Constraint: (157.48mil &gt; 100mil) Pad Free-2(6750mil,2430mil) on Multi-Layer Actual Hole Size = 157.48mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6670.635mil|Location2.X=6829.365mil|Location1.Y=4600.635mil|Location2.Y=4759.365mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6670.635mil|Location2.X=6829.365mil|Location1.Y=4600.635mil|Location2.Y=4759.365mil|Absolute=True">Hole Size Constraint: (157.48mil &gt; 100mil) Pad Free-2(6750mil,4680mil) on Multi-Layer Actual Hole Size = 157.48mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6386.383mil|Location2.X=6513.617mil|Location1.Y=4046.383mil|Location2.Y=4173.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6386.383mil|Location2.X=6513.617mil|Location1.Y=4046.383mil|Location2.Y=4173.617mil|Absolute=True">Hole Size Constraint: (125.984mil &gt; 100mil) Pad JACK DC1-1(6450mil,4110mil) on Multi-Layer Actual Slot Hole Width = 125.984mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6636.383mil|Location2.X=6763.617mil|Location1.Y=4046.383mil|Location2.Y=4173.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6636.383mil|Location2.X=6763.617mil|Location1.Y=4046.383mil|Location2.Y=4173.617mil|Absolute=True">Hole Size Constraint: (125.984mil &gt; 100mil) Pad JACK DC1-2(6700mil,4110mil) on Multi-Layer Actual Slot Hole Width = 125.984mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6486.383mil|Location2.X=6613.617mil|Location1.Y=4246.383mil|Location2.Y=4373.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6486.383mil|Location2.X=6613.617mil|Location1.Y=4246.383mil|Location2.Y=4373.617mil|Absolute=True">Hole Size Constraint: (125.984mil &gt; 100mil) Pad JACK DC1-3(6550mil,4310mil) on Multi-Layer Actual Slot Hole Width = 125.984mil</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDRAQBRGNRCZ04PDK1WDJQM4S20HMZN02GWIDJLD2IQRJGPC5KLKG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5208.956mil|Location2.X=5220.206mil|Location1.Y=2625.737mil|Location2.Y=2636.987mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5208.956mil|Location2.X=5220.206mil|Location1.Y=2625.737mil|Location2.Y=2636.987mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (6.105mil &lt; 10mil) Between Pad BT1-2(5258.683mil,2637.683mil) on Multi-Layer And Pad R15-2(5180mil,2603.307mil) on Top Layer [Top Solder] Mask Sliver [6.105mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4597.633mil|Location2.X=4608.883mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4597.633mil|Location2.X=4608.883mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-1(4593.415mil,3137.067mil) on Top Layer And Pad U1-2(4613.1mil,3137.067mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4774.798mil|Location2.X=4786.048mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4774.798mil|Location2.X=4786.048mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-10(4770.581mil,3137.067mil) on Top Layer And Pad U1-11(4790.266mil,3137.067mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4755.113mil|Location2.X=4766.363mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4755.113mil|Location2.X=4766.363mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-10(4770.581mil,3137.067mil) on Top Layer And Pad U1-9(4750.895mil,3137.067mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4794.483mil|Location2.X=4805.733mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4794.483mil|Location2.X=4805.733mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-11(4790.266mil,3137.067mil) on Top Layer And Pad U1-12(4809.951mil,3137.067mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3197.583mil|Location2.Y=3208.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3197.583mil|Location2.Y=3208.833mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-13(4866.25mil,3193.366mil) on Top Layer And Pad U1-14(4866.25mil,3213.051mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3217.268mil|Location2.Y=3228.518mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3217.268mil|Location2.Y=3228.518mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-14(4866.25mil,3213.051mil) on Top Layer And Pad U1-15(4866.25mil,3232.736mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3236.953mil|Location2.Y=3248.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3236.953mil|Location2.Y=3248.203mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-15(4866.25mil,3232.736mil) on Top Layer And Pad U1-16(4866.25mil,3252.421mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3256.638mil|Location2.Y=3267.888mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3256.638mil|Location2.Y=3267.888mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-16(4866.25mil,3252.421mil) on Top Layer And Pad U1-17(4866.25mil,3272.106mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3276.323mil|Location2.Y=3287.573mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3276.323mil|Location2.Y=3287.573mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-17(4866.25mil,3272.106mil) on Top Layer And Pad U1-18(4866.25mil,3291.791mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3296.008mil|Location2.Y=3307.258mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3296.008mil|Location2.Y=3307.258mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-18(4866.25mil,3291.791mil) on Top Layer And Pad U1-19(4866.25mil,3311.476mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3315.693mil|Location2.Y=3326.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3315.693mil|Location2.Y=3326.943mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-19(4866.25mil,3311.476mil) on Top Layer And Pad U1-20(4866.25mil,3331.161mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4617.318mil|Location2.X=4628.568mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4617.318mil|Location2.X=4628.568mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-2(4613.1mil,3137.067mil) on Top Layer And Pad U1-3(4632.785mil,3137.067mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3335.379mil|Location2.Y=3346.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3335.379mil|Location2.Y=3346.629mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-20(4866.25mil,3331.161mil) on Top Layer And Pad U1-21(4866.25mil,3350.846mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3355.064mil|Location2.Y=3366.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3355.064mil|Location2.Y=3366.314mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-21(4866.25mil,3350.846mil) on Top Layer And Pad U1-22(4866.25mil,3370.531mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3374.749mil|Location2.Y=3385.999mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3374.749mil|Location2.Y=3385.999mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-22(4866.25mil,3370.531mil) on Top Layer And Pad U1-23(4866.25mil,3390.216mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3394.434mil|Location2.Y=3405.684mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4832.672mil|Location2.X=4843.922mil|Location1.Y=3394.434mil|Location2.Y=3405.684mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-23(4866.25mil,3390.216mil) on Top Layer And Pad U1-24(4866.25mil,3409.901mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4794.483mil|Location2.X=4805.733mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4794.483mil|Location2.X=4805.733mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-25(4809.951mil,3466.2mil) on Top Layer And Pad U1-26(4790.266mil,3466.2mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4774.798mil|Location2.X=4786.048mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4774.798mil|Location2.X=4786.048mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-26(4790.266mil,3466.2mil) on Top Layer And Pad U1-27(4770.581mil,3466.2mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4755.113mil|Location2.X=4766.363mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4755.113mil|Location2.X=4766.363mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-27(4770.581mil,3466.2mil) on Top Layer And Pad U1-28(4750.895mil,3466.2mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4735.428mil|Location2.X=4746.678mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4735.428mil|Location2.X=4746.678mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-28(4750.895mil,3466.2mil) on Top Layer And Pad U1-29(4731.211mil,3466.2mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4715.743mil|Location2.X=4726.993mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4715.743mil|Location2.X=4726.993mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-29(4731.211mil,3466.2mil) on Top Layer And Pad U1-30(4711.525mil,3466.2mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4637.003mil|Location2.X=4648.253mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4637.003mil|Location2.X=4648.253mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-3(4632.785mil,3137.067mil) on Top Layer And Pad U1-4(4652.47mil,3137.067mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4696.058mil|Location2.X=4707.308mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4696.058mil|Location2.X=4707.308mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-30(4711.525mil,3466.2mil) on Top Layer And Pad U1-31(4691.84mil,3466.2mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4676.373mil|Location2.X=4687.623mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4676.373mil|Location2.X=4687.623mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-31(4691.84mil,3466.2mil) on Top Layer And Pad U1-32(4672.155mil,3466.2mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4656.688mil|Location2.X=4667.938mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4656.688mil|Location2.X=4667.938mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-32(4672.155mil,3466.2mil) on Top Layer And Pad U1-33(4652.47mil,3466.2mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4637.003mil|Location2.X=4648.253mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4637.003mil|Location2.X=4648.253mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-33(4652.47mil,3466.2mil) on Top Layer And Pad U1-34(4632.785mil,3466.2mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4617.318mil|Location2.X=4628.568mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4617.318mil|Location2.X=4628.568mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-34(4632.785mil,3466.2mil) on Top Layer And Pad U1-35(4613.1mil,3466.2mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4597.633mil|Location2.X=4608.883mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4597.633mil|Location2.X=4608.883mil|Location1.Y=3432.623mil|Location2.Y=3443.873mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-35(4613.1mil,3466.2mil) on Top Layer And Pad U1-36(4593.415mil,3466.2mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3394.434mil|Location2.Y=3405.684mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3394.434mil|Location2.Y=3405.684mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-37(4537.116mil,3409.901mil) on Top Layer And Pad U1-38(4537.116mil,3390.216mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3374.749mil|Location2.Y=3385.999mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3374.749mil|Location2.Y=3385.999mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-38(4537.116mil,3390.216mil) on Top Layer And Pad U1-39(4537.116mil,3370.531mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3355.064mil|Location2.Y=3366.314mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3355.064mil|Location2.Y=3366.314mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-39(4537.116mil,3370.531mil) on Top Layer And Pad U1-40(4537.116mil,3350.846mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4656.688mil|Location2.X=4667.938mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4656.688mil|Location2.X=4667.938mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-4(4652.47mil,3137.067mil) on Top Layer And Pad U1-5(4672.155mil,3137.067mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3335.379mil|Location2.Y=3346.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3335.379mil|Location2.Y=3346.629mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-40(4537.116mil,3350.846mil) on Top Layer And Pad U1-41(4537.116mil,3331.161mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3315.693mil|Location2.Y=3326.943mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3315.693mil|Location2.Y=3326.943mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-41(4537.116mil,3331.161mil) on Top Layer And Pad U1-42(4537.116mil,3311.476mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3296.008mil|Location2.Y=3307.258mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3296.008mil|Location2.Y=3307.258mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-42(4537.116mil,3311.476mil) on Top Layer And Pad U1-43(4537.116mil,3291.791mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3276.323mil|Location2.Y=3287.573mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3276.323mil|Location2.Y=3287.573mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-43(4537.116mil,3291.791mil) on Top Layer And Pad U1-44(4537.116mil,3272.106mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3256.638mil|Location2.Y=3267.888mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3256.638mil|Location2.Y=3267.888mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-44(4537.116mil,3272.106mil) on Top Layer And Pad U1-45(4537.116mil,3252.421mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3236.953mil|Location2.Y=3248.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3236.953mil|Location2.Y=3248.203mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-45(4537.116mil,3252.421mil) on Top Layer And Pad U1-46(4537.116mil,3232.736mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3217.268mil|Location2.Y=3228.518mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3217.268mil|Location2.Y=3228.518mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-46(4537.116mil,3232.736mil) on Top Layer And Pad U1-47(4537.116mil,3213.051mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3197.583mil|Location2.Y=3208.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4503.538mil|Location2.X=4514.788mil|Location1.Y=3197.583mil|Location2.Y=3208.833mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-47(4537.116mil,3213.051mil) on Top Layer And Pad U1-48(4537.116mil,3193.366mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4676.373mil|Location2.X=4687.623mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4676.373mil|Location2.X=4687.623mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-5(4672.155mil,3137.067mil) on Top Layer And Pad U1-6(4691.84mil,3137.067mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4696.058mil|Location2.X=4707.308mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4696.058mil|Location2.X=4707.308mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-6(4691.84mil,3137.067mil) on Top Layer And Pad U1-7(4711.525mil,3137.067mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4715.743mil|Location2.X=4726.993mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4715.743mil|Location2.X=4726.993mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.662mil &lt; 10mil) Between Pad U1-7(4711.525mil,3137.067mil) on Top Layer And Pad U1-8(4731.211mil,3137.067mil) on Top Layer [Top Solder] Mask Sliver [0.662mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4735.428mil|Location2.X=4746.678mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4735.428mil|Location2.X=4746.678mil|Location1.Y=3103.489mil|Location2.Y=3114.739mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.661mil &lt; 10mil) Between Pad U1-8(4731.211mil,3137.067mil) on Top Layer And Pad U1-9(4750.895mil,3137.067mil) on Top Layer [Top Solder] Mask Sliver [0.661mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDGLN5VV1MDQIOPV0WTXYRONL1MCBS4SPTQAR0JXOJE00ZCAQKX5XH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4033.667mil|Location2.X=4041.333mil|Location1.Y=4355.474mil|Location2.Y=4363.141mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4033.667mil|Location2.X=4041.333mil|Location1.Y=4355.474mil|Location2.Y=4363.141mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Arc (4070mil,4310mil) on Top Overlay And Pad L1-1(4070mil,4360mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4033.972mil|Location2.X=4041.639mil|Location1.Y=4256.659mil|Location2.Y=4264.326mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4033.972mil|Location2.X=4041.639mil|Location1.Y=4256.659mil|Location2.Y=4264.326mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Arc (4070mil,4310mil) on Top Overlay And Pad L1-2(4070mil,4260mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4379.627mil|Location2.X=4387.294mil|Location1.Y=4295.986mil|Location2.Y=4303.653mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4379.627mil|Location2.X=4387.294mil|Location1.Y=4295.986mil|Location2.Y=4303.653mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Arc (4439.12mil,4319.556mil) on Top Overlay And Pad L2-1(4389.12mil,4319.556mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4484.598mil|Location2.X=4492.265mil|Location1.Y=4283.229mil|Location2.Y=4290.895mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4484.598mil|Location2.X=4492.265mil|Location1.Y=4283.229mil|Location2.Y=4290.895mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Arc (4439.12mil,4319.556mil) on Top Overlay And Pad L2-2(4489.12mil,4319.556mil) on Multi-Layer [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5268.16mil|Location2.X=5279.41mil|Location1.Y=2483.702mil|Location2.Y=2494.952mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5268.16mil|Location2.X=5279.41mil|Location1.Y=2483.702mil|Location2.Y=2494.952mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.812mil &lt; 10mil) Between Pad BT1-1(5258.683mil,2449.683mil) on Multi-Layer And Track (5276.683mil,2496.683mil)(5276.683mil,2591.683mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.813mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5268.209mil|Location2.X=5279.459mil|Location1.Y=2592.935mil|Location2.Y=2604.185mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5268.209mil|Location2.X=5279.459mil|Location1.Y=2592.935mil|Location2.Y=2604.185mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (8.887mil &lt; 10mil) Between Pad BT1-2(5258.683mil,2637.683mil) on Multi-Layer And Track (5276.683mil,2496.683mil)(5276.683mil,2591.683mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [8.887mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5272.85mil|Location2.X=5280.516mil|Location1.Y=2651.85mil|Location2.Y=2659.516mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5272.85mil|Location2.X=5280.516mil|Location1.Y=2651.85mil|Location2.Y=2659.516mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad BT1-2(5258.683mil,2637.683mil) on Multi-Layer And Track (5276.683mil,2655.683mil)(5277.683mil,2656.683mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4181.06mil|Location2.X=4192.31mil|Location1.Y=2715.005mil|Location2.Y=2726.255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4181.06mil|Location2.X=4192.31mil|Location1.Y=2715.005mil|Location2.Y=2726.255mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.914mil &lt; 10mil) Between Pad C12-1(4191.683mil,2748.209mil) on Top Layer And Text "C12" (4116.707mil,2651.693mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [7.914mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4598.457mil|Location2.X=4606.123mil|Location1.Y=3582.322mil|Location2.Y=3589.988mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4598.457mil|Location2.X=4606.123mil|Location1.Y=3582.322mil|Location2.Y=3589.988mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad C17-1(4574.99mil,3571.683mil) on Top Layer And Text "C18" (4562.303mil,3736.106mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6494.167mil|Location2.X=6501.833mil|Location1.Y=3787.147mil|Location2.Y=3794.814mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6494.167mil|Location2.X=6501.833mil|Location1.Y=3787.147mil|Location2.Y=3794.814mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad C6-1(6490mil,3820mil) on Multi-Layer And Text "P1" (6498mil,3731mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6242.04mil|Location2.X=6253.29mil|Location1.Y=3070.546mil|Location2.Y=3081.796mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6242.04mil|Location2.X=6253.29mil|Location1.Y=3070.546mil|Location2.Y=3081.796mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.843mil &lt; 10mil) Between Pad D1-1(6223.059mil,3106.683mil) on Top Layer And Track (6256.524mil,3076.171mil)(6256.524mil,3137.195mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.843mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6242.04mil|Location2.X=6253.29mil|Location1.Y=3070.546mil|Location2.Y=3081.796mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6242.04mil|Location2.X=6253.29mil|Location1.Y=3070.546mil|Location2.Y=3081.796mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.843mil &lt; 10mil) Between Pad D1-1(6223.059mil,3106.683mil) on Top Layer And Track (6256.524mil,3076.171mil)(6323.453mil,3076.171mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.843mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6242.04mil|Location2.X=6253.29mil|Location1.Y=3131.57mil|Location2.Y=3142.82mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6242.04mil|Location2.X=6253.29mil|Location1.Y=3131.57mil|Location2.Y=3142.82mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.843mil &lt; 10mil) Between Pad D1-1(6223.059mil,3106.683mil) on Top Layer And Track (6256.524mil,3137.195mil)(6323.453mil,3137.195mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.843mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6326.686mil|Location2.X=6337.936mil|Location1.Y=3070.546mil|Location2.Y=3081.796mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6326.686mil|Location2.X=6337.936mil|Location1.Y=3070.546mil|Location2.Y=3081.796mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.843mil &lt; 10mil) Between Pad D1-2(6356.917mil,3106.683mil) on Top Layer And Track (6256.524mil,3076.171mil)(6323.453mil,3076.171mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.843mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6326.686mil|Location2.X=6337.936mil|Location1.Y=3131.57mil|Location2.Y=3142.82mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6326.686mil|Location2.X=6337.936mil|Location1.Y=3131.57mil|Location2.Y=3142.82mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (9.843mil &lt; 10mil) Between Pad D1-2(6356.917mil,3106.683mil) on Top Layer And Track (6256.524mil,3137.195mil)(6323.453mil,3137.195mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [9.843mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4741.188mil|Location2.X=4748.854mil|Location1.Y=4546.157mil|Location2.Y=4553.824mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4741.188mil|Location2.X=4748.854mil|Location1.Y=4546.157mil|Location2.Y=4553.824mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad IC1-1(4723.898mil,4535mil) on Top Layer And Text "IC1" (4745.021mil,4490.01mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4696.619mil|Location2.X=4707.869mil|Location1.Y=4575.635mil|Location2.Y=4586.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4696.619mil|Location2.X=4707.869mil|Location1.Y=4575.635mil|Location2.Y=4586.885mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.874mil &lt; 10mil) Between Pad IC1-1(4723.898mil,4535mil) on Top Layer And Track (4682.559mil,4589.134mil)(4946.338mil,4589.134mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [7.874mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4831.159mil|Location2.X=4838.825mil|Location1.Y=4536.16mil|Location2.Y=4543.827mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4831.159mil|Location2.X=4838.825mil|Location1.Y=4536.16mil|Location2.Y=4543.827mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad IC1-2(4814.449mil,4535mil) on Top Layer And Text "IC1" (4745.021mil,4490.01mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4787.17mil|Location2.X=4798.42mil|Location1.Y=4575.635mil|Location2.Y=4586.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4787.17mil|Location2.X=4798.42mil|Location1.Y=4575.635mil|Location2.Y=4586.885mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.874mil &lt; 10mil) Between Pad IC1-2(4814.449mil,4535mil) on Top Layer And Track (4682.559mil,4589.134mil)(4946.338mil,4589.134mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [7.874mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4875.92mil|Location2.X=4887.17mil|Location1.Y=4486.478mil|Location2.Y=4497.728mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4875.92mil|Location2.X=4887.17mil|Location1.Y=4486.478mil|Location2.Y=4497.728mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.783mil &lt; 10mil) Between Pad IC1-3(4905mil,4535mil) on Top Layer And Text "IC1" (4745.021mil,4490.01mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.782mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4877.721mil|Location2.X=4888.971mil|Location1.Y=4575.635mil|Location2.Y=4586.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4877.721mil|Location2.X=4888.971mil|Location1.Y=4575.635mil|Location2.Y=4586.885mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.874mil &lt; 10mil) Between Pad IC1-3(4905mil,4535mil) on Top Layer And Track (4682.559mil,4589.134mil)(4946.338mil,4589.134mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [7.874mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4874.769mil|Location2.X=4886.019mil|Location1.Y=4713.43mil|Location2.Y=4724.68mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4874.769mil|Location2.X=4886.019mil|Location1.Y=4713.43mil|Location2.Y=4724.68mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (7.874mil &lt; 10mil) Between Pad IC1-4(4814.449mil,4765.315mil) on Top Layer And Track (4682.559mil,4711.181mil)(4946.338mil,4711.181mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [7.874mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6466.167mil|Location2.X=6473.833mil|Location1.Y=4286.167mil|Location2.Y=4293.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6466.167mil|Location2.X=6473.833mil|Location1.Y=4286.167mil|Location2.Y=4293.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad JACK DC1-3(6550mil,4310mil) on Multi-Layer And Track (6455mil,4290mil)(7000mil,4290mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4047.417mil|Location2.X=4055.083mil|Location1.Y=4326.167mil|Location2.Y=4333.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4047.417mil|Location2.X=4055.083mil|Location1.Y=4326.167mil|Location2.Y=4333.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad L1-1(4070mil,4360mil) on Multi-Layer And Track (4020mil,4330mil)(4120mil,4330mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4051.056mil|Location2.X=4058.723mil|Location1.Y=4286.167mil|Location2.Y=4293.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4051.056mil|Location2.X=4058.723mil|Location1.Y=4286.167mil|Location2.Y=4293.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad L1-2(4070mil,4260mil) on Multi-Layer And Track (4020mil,4290mil)(4070mil,4290mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4062.666mil|Location2.X=4070.332mil|Location1.Y=4288.967mil|Location2.Y=4296.634mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4062.666mil|Location2.X=4070.332mil|Location1.Y=4288.967mil|Location2.Y=4296.634mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad L1-2(4070mil,4260mil) on Multi-Layer And Track (4020mil,4330mil)(4070mil,4290mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4066.167mil|Location2.X=4073.833mil|Location1.Y=4286.167mil|Location2.Y=4293.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4066.167mil|Location2.X=4073.833mil|Location1.Y=4286.167mil|Location2.Y=4293.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad L1-2(4070mil,4260mil) on Multi-Layer And Track (4070mil,4290mil)(4120mil,4290mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4066.167mil|Location2.X=4073.833mil|Location1.Y=4286.167mil|Location2.Y=4293.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4066.167mil|Location2.X=4073.833mil|Location1.Y=4286.167mil|Location2.Y=4293.833mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad L1-2(4070mil,4260mil) on Multi-Layer And Track (4070mil,4290mil)(4120mil,4330mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4415.287mil|Location2.X=4422.953mil|Location1.Y=4296.973mil|Location2.Y=4304.639mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4415.287mil|Location2.X=4422.953mil|Location1.Y=4296.973mil|Location2.Y=4304.639mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad L2-1(4389.12mil,4319.556mil) on Multi-Layer And Track (4419.12mil,4269.556mil)(4419.12mil,4369.556mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4453.371mil|Location2.X=4461.037mil|Location1.Y=4313.328mil|Location2.Y=4320.994mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4453.371mil|Location2.X=4461.037mil|Location1.Y=4313.328mil|Location2.Y=4320.994mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad L2-2(4489.12mil,4319.556mil) on Multi-Layer And Track (4419.12mil,4269.556mil)(4459.12mil,4319.556mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4454.305mil|Location2.X=4461.972mil|Location1.Y=4316.949mil|Location2.Y=4324.616mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4454.305mil|Location2.X=4461.972mil|Location1.Y=4316.949mil|Location2.Y=4324.616mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad L2-2(4489.12mil,4319.556mil) on Multi-Layer And Track (4419.12mil,4369.556mil)(4459.12mil,4319.556mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4455.287mil|Location2.X=4462.953mil|Location1.Y=4309.862mil|Location2.Y=4317.528mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4455.287mil|Location2.X=4462.953mil|Location1.Y=4309.862mil|Location2.Y=4317.528mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad L2-2(4489.12mil,4319.556mil) on Multi-Layer And Track (4459.12mil,4269.556mil)(4459.12mil,4319.556mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4455.287mil|Location2.X=4462.953mil|Location1.Y=4315.723mil|Location2.Y=4323.389mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4455.287mil|Location2.X=4462.953mil|Location1.Y=4315.723mil|Location2.Y=4323.389mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad L2-2(4489.12mil,4319.556mil) on Multi-Layer And Track (4459.12mil,4319.556mil)(4459.12mil,4369.556mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6431.762mil|Location2.X=6439.428mil|Location1.Y=2401.127mil|Location2.Y=2408.794mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6431.762mil|Location2.X=6439.428mil|Location1.Y=2401.127mil|Location2.Y=2408.794mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 10mil) Between Pad R2-1(6460.514mil,2377.401mil) on Top Layer And Text "C19" (6435.595mil,2378.234mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4214.525mil|Location2.X=4225.775mil|Location1.Y=3155.162mil|Location2.Y=3166.412mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4214.525mil|Location2.X=4225.775mil|Location1.Y=3155.162mil|Location2.Y=3166.412mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.299mil &lt; 10mil) Between Pad R27-1(4240mil,3180.472mil) on Top Layer And Track (4217mil,3157mil)(4217mil,3264mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4253.076mil|Location2.X=4264.326mil|Location1.Y=3154.269mil|Location2.Y=3165.519mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4253.076mil|Location2.X=4264.326mil|Location1.Y=3154.269mil|Location2.Y=3165.519mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (1.787mil &lt; 10mil) Between Pad R27-1(4240mil,3180.472mil) on Top Layer And Track (4217mil,3157mil)(4263mil,3157mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [1.787mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4218.375mil|Location2.X=4229.625mil|Location1.Y=3196.454mil|Location2.Y=3207.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4218.375mil|Location2.X=4229.625mil|Location1.Y=3196.454mil|Location2.Y=3207.704mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.843mil &lt; 10mil) Between Pad R27-1(4240mil,3180.472mil) on Top Layer And Track (4224mil,3206mil)(4224mil,3214mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.843mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4250.375mil|Location2.X=4261.625mil|Location1.Y=3196.454mil|Location2.Y=3207.704mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4250.375mil|Location2.X=4261.625mil|Location1.Y=3196.454mil|Location2.Y=3207.704mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.843mil &lt; 10mil) Between Pad R27-1(4240mil,3180.472mil) on Top Layer And Track (4256mil,3206mil)(4256mil,3214mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.843mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4254.225mil|Location2.X=4265.475mil|Location1.Y=3155.162mil|Location2.Y=3166.412mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4254.225mil|Location2.X=4265.475mil|Location1.Y=3155.162mil|Location2.Y=3166.412mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.299mil &lt; 10mil) Between Pad R27-1(4240mil,3180.472mil) on Top Layer And Track (4263mil,3157mil)(4263mil,3264mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4214.525mil|Location2.X=4225.775mil|Location1.Y=3214.218mil|Location2.Y=3225.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4214.525mil|Location2.X=4225.775mil|Location1.Y=3214.218mil|Location2.Y=3225.468mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.299mil &lt; 10mil) Between Pad R27-2(4240mil,3239.528mil) on Top Layer And Track (4217mil,3157mil)(4217mil,3264mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.299mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4215.674mil|Location2.X=4226.924mil|Location1.Y=3254.981mil|Location2.Y=3266.231mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4215.674mil|Location2.X=4226.924mil|Location1.Y=3254.981mil|Location2.Y=3266.231mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.787mil &lt; 10mil) Between Pad R27-2(4240mil,3239.528mil) on Top Layer And Track (4217mil,3264mil)(4263mil,3264mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.787mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4218.375mil|Location2.X=4229.625mil|Location1.Y=3212.296mil|Location2.Y=3223.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4218.375mil|Location2.X=4229.625mil|Location1.Y=3212.296mil|Location2.Y=3223.546mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.843mil &lt; 10mil) Between Pad R27-2(4240mil,3239.528mil) on Top Layer And Track (4224mil,3206mil)(4224mil,3214mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.843mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4250.375mil|Location2.X=4261.625mil|Location1.Y=3212.296mil|Location2.Y=3223.546mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4250.375mil|Location2.X=4261.625mil|Location1.Y=3212.296mil|Location2.Y=3223.546mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (3.843mil &lt; 10mil) Between Pad R27-2(4240mil,3239.528mil) on Top Layer And Track (4256mil,3206mil)(4256mil,3214mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [3.843mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4254.225mil|Location2.X=4265.475mil|Location1.Y=3214.218mil|Location2.Y=3225.468mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4254.225mil|Location2.X=4265.475mil|Location1.Y=3214.218mil|Location2.Y=3225.468mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (2.299mil &lt; 10mil) Between Pad R27-2(4240mil,3239.528mil) on Top Layer And Track (4263mil,3157mil)(4263mil,3264mil) on Top Overlay [Top Overlay] to [Top Solder] clearance [2.299mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID0MFDDPRJ1VFOJKIQ2AFVRYOBJNFBWBHB3WSLKCM3CIVLAC3UFBII"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6534.154mil|Location2.X=6541.82mil|Location1.Y=3757.157mil|Location2.Y=3764.824mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6534.154mil|Location2.X=6541.82mil|Location1.Y=3757.157mil|Location2.Y=3764.824mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Arc (6588.426mil,3820mil) on Top Overlay And Text "P1" (6498mil,3731mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4301.073mil|Location2.X=4312.323mil|Location1.Y=3283.212mil|Location2.Y=3294.462mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4301.073mil|Location2.X=4312.323mil|Location1.Y=3283.212mil|Location2.Y=3294.462mil|Absolute=True">Silk To Silk Clearance Constraint: (4.327mil &lt; 10mil) Between Text "C14" (4276.707mil,3221.693mil) on Top Overlay And Text "R27" (4225mil,3296mil) on Top Overlay Silk Text to Silk Clearance [4.327mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4262.729mil|Location2.X=4273.979mil|Location1.Y=3258.375mil|Location2.Y=3269.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4262.729mil|Location2.X=4273.979mil|Location1.Y=3258.375mil|Location2.Y=3269.625mil|Absolute=True">Silk To Silk Clearance Constraint: (6.707mil &lt; 10mil) Between Text "C14" (4276.707mil,3221.693mil) on Top Overlay And Track (4217mil,3264mil)(4263mil,3264mil) on Top Overlay Silk Text to Silk Clearance [6.707mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4262.729mil|Location2.X=4273.979mil|Location1.Y=3258.375mil|Location2.Y=3269.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4262.729mil|Location2.X=4273.979mil|Location1.Y=3258.375mil|Location2.Y=3269.625mil|Absolute=True">Silk To Silk Clearance Constraint: (6.707mil &lt; 10mil) Between Text "C14" (4276.707mil,3221.693mil) on Top Overlay And Track (4263mil,3157mil)(4263mil,3264mil) on Top Overlay Silk Text to Silk Clearance [6.707mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6455.625mil|Location2.X=6466.875mil|Location1.Y=3977.359mil|Location2.Y=3988.609mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6455.625mil|Location2.X=6466.875mil|Location1.Y=3977.359mil|Location2.Y=3988.609mil|Absolute=True">Silk To Silk Clearance Constraint: (5.5mil &lt; 10mil) Between Text "C6" (6469mil,3933mil) on Top Overlay And Track (6455mil,3960mil)(6455mil,4290mil) on Top Overlay Silk Text to Silk Clearance [5.5mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6465.167mil|Location2.X=6472.833mil|Location1.Y=3956.167mil|Location2.Y=3963.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6465.167mil|Location2.X=6472.833mil|Location1.Y=3956.167mil|Location2.Y=3963.833mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "C6" (6469mil,3933mil) on Top Overlay And Track (6455mil,3960mil)(7000mil,3960mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3811.206mil|Location2.X=3822.456mil|Location1.Y=4134.385mil|Location2.Y=4145.635mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3811.206mil|Location2.X=3822.456mil|Location1.Y=4134.385mil|Location2.Y=4145.635mil|Absolute=True">Silk To Silk Clearance Constraint: (0.296mil &lt; 10mil) Between Text "R25" (3821.979mil,4140.01mil) on Top Overlay And Track (3811.683mil,3421.683mil)(3811.683mil,4421.683mil) on Top Overlay Silk Text to Silk Clearance [0.296mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3162.837mil|Location2.X=3170.503mil|Location1.Y=3417.85mil|Location2.Y=3425.516mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\Irradiance Sensor\Irradiance Sensor2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3162.837mil|Location2.X=3170.503mil|Location1.Y=3417.85mil|Location2.Y=3425.516mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 10mil) Between Text "S1" (3126.683mil,3376.683mil) on Top Overlay And Track (2751.683mil,3421.683mil)(3811.683mil,3421.683mil) on Top Overlay Silk Text to Silk Clearance [0mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
