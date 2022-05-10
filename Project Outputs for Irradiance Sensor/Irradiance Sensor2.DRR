@@ -1,0 +1,26 @@
+----------------------------------------------------------------------------------------------------------------------------------
+NCDrill File Report For: Irradiance Sensor2.PcbDoc   5/10/2022  3:18:55 PM
+----------------------------------------------------------------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : Irradiance Sensor2-RoundHoles.TXT
+ASCII SlotHoles File : Irradiance Sensor2-SlotHoles.TXT
+
+Tool       Hole Size               Hole Tolerance               Hole Type       Hole Count   Plated         Tool Travel
+----------------------------------------------------------------------------------------------------------------------------------
+T1      10mil (0.254mm)                                           Round             29        PTH        10.59inch (269.09mm)
+T2      25mil (0.635mm)                                           Round             24        PTH        6.35inch (161.18mm)
+T3      28mil (0.7mm)                                             Round             2         PTH        0.12inch (3.10mm)
+T4      30mil (0.762mm)                                           Round             8         PTH        0.70inch (17.78mm)
+T5      31mil (0.787mm)                                           Round             4         PTH        0.65inch (16.43mm)
+T6      32mil (0.8mm)                                             Round             10        PTH        4.85inch (123.09mm)
+T7      32mil (0.813mm)                                           Round             2         PTH        0.19inch (4.83mm)
+T8      35mil (0.9mm)                                             Round             17        PTH        4.54inch (115.24mm)
+T9      40mil (1.016mm)                                           Round             4         PTH        0.52inch (13.25mm)
+T10     43mil (1.1mm)                                             Round             4         PTH        0.78inch (19.81mm)
+T11     59mil (1.5mm)                                             Slot              3         PTH        1.27inch (32.19mm)
+T12     157mil (4mm)                                              Round             4         PTH        9.87inch (250.70mm)
+----------------------------------------------------------------------------------------------------------------------------------
+Totals                                                                              111
+
+Total Processing Time (hh:mm:ss) : 00:00:00

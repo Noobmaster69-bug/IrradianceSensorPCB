@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------------------
-Gerber File Extension Report For: Irradiance Sensor.GBR   5/7/2022  7:39:49 PM
+Gerber File Extension Report For: Irradiance Sensor2.GBR   5/10/2022  3:18:29 PM
 ------------------------------------------------------------------------------------------
 
 
@@ -14,13 +14,8 @@ Layer Extension     Layer Description
 .gbr                Bottom Solder                           
 .gbr                Bottom Paste                            
 .gbr                Bottom Overlay                          
-.gbr                Mechanical 1                            
-.gbr                Mechanical 13                           
-.gbr                Mechanical 15                           
 .gbr                Keep-Out Layer                          
 .gbr                Top Pad Master                          
 .gbr                Bottom Pad Master                       
-.gbr                Drill Drawing                           
-.gbr                Drill Guide                             
 .gbr                Profile                                 
 ------------------------------------------------------------------------------------------

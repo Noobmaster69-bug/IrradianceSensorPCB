@@ -1,0 +1,20 @@
+Change Component Designator: OldDesignator=D1 NewDesignator=*1
+Change Component Designator: OldDesignator=R25 NewDesignator=R26
+Change Component Designator: OldDesignator=R26 NewDesignator=R27
+Change Component Designator: OldDesignator=R27 NewDesignator=R25
+Change Component Designator: OldDesignator=R28 NewDesignator=R29
+Change Component Designator: OldDesignator=R29 NewDesignator=R30
+Added Component: Designator=R28(tro smd 0603)
+Add component (AddParameter): Name = "Chung_Loai"; Value = "Dán"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Don_Vi"; Value = "Con"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Kieu_Chan"; Value = ""; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ma_Hang"; Value = "MH006333"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "So_Chan"; Value = "2"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Ten_Linh_Kien"; Value = "Tr? 0603 1% 10k"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=R28-1
+Added Pin To Net: NetName=BOOT1 Pin=R28-2
+Added Pin To Net: NetName=BOOT1 Pin=U1-20
+Added Net: Name=BOOT1
+Added Member To Class: ClassName=Irradiance Sensor Member=Component *1 BZV55
+Added Member To Class: ClassName=Irradiance Sensor Member=Component R30 Res
+Added Room: Name=Irradiance Sensor
